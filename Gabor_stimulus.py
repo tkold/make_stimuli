@@ -1,6 +1,6 @@
+import os
 import numpy as np
 import cv2
-import os
 
 
 def gabor_function(r, center, sig, th, fr):
@@ -72,3 +72,20 @@ def make_video(sw, size, sig, th, fr, delta):
             f.write(filename + '/' + str(n) + '.jpg\n')
 
     return 0
+
+
+size = [120, 160]  # Vertical x side
+sig = 20.0
+th = 90.0
+fr = 0.50
+
+while fr < 10:
+    filename = 'G_' + str(sig) + '_' + str(th) + '_' + str(fr)
+
+    showimage = make_gabordist(size, sig, th, fr)
+    showimage = fit_imageformat(showimage)
+    print(np.sum(showimage / (size[0] * size[1] * 3)))
+
+    cv2.imwrite(filename + '.jpg', showimage)  # Output
+    np.savetxt(filename + '.csv', showimage[:, :, 0])
+    fr += 0.1

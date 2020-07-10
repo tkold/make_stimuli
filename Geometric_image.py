@@ -1,6 +1,4 @@
 import numpy as np
-import cv2
-import os
 import matplotlib.pyplot as plt
 import util as util
 
@@ -106,3 +104,22 @@ def Geometric_image(size, geo, para):
     fig.savefig('original.png')
     util.resize('original.png', filename, size)
     return filename.replace('.png','')
+
+
+size = [120, 160]  # Vertical x side
+gi =1
+
+if gi==1:
+
+    dc=0.5
+    cpara = 0.5
+    while cpara < 35+dc:
+        filename = Geometric_image(size, 'circle', [0,0,cpara])
+        cpara += dc
+
+elif gi == 2:
+    dc=0.05
+    cpara = 0.05
+    while cpara < 0.5+dc:
+        filename = Geometric_image(size, 'spiral', [50, -500, 0.1, cpara, 4])
+        cpara += dc
