@@ -1,8 +1,8 @@
 import numpy as np
 import cv2
-from precalc import Gabor_stimulus as Gs
-from precalc import p_util as util
-from precalc import Geometric_image as GI
+import Gabor_stimulus as Gs
+import util as util
+import Geometric_image as GI
 
 size = [120, 160]  # Vertical x side
 
